@@ -67,6 +67,12 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", inline: <<-SHELL
     sudo apt-get update
     sudo apt-get upgrade -y
-    sudo apt-get install -y python-pip
+    sudo apt-get install -y python-pip ruby
+    
+    wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sudo sh
+    heroku --version
+
+    pip install -r /bot/pip-requirements.txt
+
   SHELL
 end
