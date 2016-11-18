@@ -72,7 +72,7 @@ Vagrant.configure(2) do |config|
     wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sudo sh
     heroku --version
 
-    pip install -r /bot/pip-requirements.txt
+    pip install -r /bot/requirements.txt
 
   SHELL
 end
