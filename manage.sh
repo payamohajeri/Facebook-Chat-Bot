@@ -20,6 +20,7 @@ usage() {
 }
 
 deploy() {
+    echo "Be sure that you have commited all the changes ..."
     git push heroku master
 }
 
@@ -28,7 +29,12 @@ buildpack() {
 }
 
 config() {
+
+    #Facebook app access token
     heroku config:add PAGE_ACCESS_TOKEN=$2
+
+    #Facebook app verify token
+    heroku config:add VERIFY_TOKEN=$3
 }
 
 removeapps() {
