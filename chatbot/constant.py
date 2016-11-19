@@ -12,4 +12,5 @@ else:
     _db_link="localhost:6379"
 
 _fb_url="https://graph.facebook.com/v2.6/me/messages"
+_fb_userinfo_url="https://graph.facebook.com/v2.6/"
 _response_content_type="application/json"

@@ -9,10 +9,11 @@ from flask import Flask, request
 from chatbot.message import message
 from chatbot.db import db
 from chatbot.response import response
+from chatbot.user import user
 from chatbot.shared import *
 
 app=Flask(__name__)
-botdb=db()
+botDB=db()
 
 @app.route('/', methods=['GET'])
 def verify():
@@ -30,11 +31,12 @@ def verify():
 def webhook():
     data = request.get_json()
     log(request.data)
-    # botdb.insert(["webhook", request.query_string])
+    # botDB.insert(["webhook", request.query_string])
     if "object" in data and data["object"] == "page":
-        botmessage=message(data)
-        botresponse=response(botmessage.getSenderID())
-        botresponse.send("Hello !")
+        botMessage=message(data)
+        userInfo=user(botmessage.getSenderID())
+        botResponse=response(botmessage.getSenderID())
+        botResponse.send("Hello "+str(userInfo.getFirstName())+" !")
     else:
         pass
     return "ok", 200
