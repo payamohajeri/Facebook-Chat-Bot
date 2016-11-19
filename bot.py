@@ -31,10 +31,12 @@ def webhook():
     data = request.get_json()
     log(request.data)
     # botdb.insert(["webhook", request.query_string])
-    if data["object"] == "page":
+    if "object" in data and data["object"] == "page":
         botmessage=message(data)
-        botresponse=response(botmessage.getRecipientID())
+        botresponse=response(botmessage.getSenderID())
         botresponse.send("Hello !")
+    else:
+        pass
     return "ok", 200
 
 def main():

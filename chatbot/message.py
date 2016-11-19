@@ -46,3 +46,6 @@ class message(object):
 
     def getRecipientID(self):
         return self.recipient_id
+
+    def getSenderID(self):
+        return self.sender_id
