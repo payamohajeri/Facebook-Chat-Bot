@@ -29,7 +29,7 @@ class response(object):
     def setMessageText(self, value):
         self.message_text=value
 
-    def prepare():
+    def prepare(self):
         params = { "access_token": self.access_token }
         headers = { "Content-Type": self.content_type }
         data = json.dumps({
