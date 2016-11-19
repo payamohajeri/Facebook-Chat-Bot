@@ -34,8 +34,6 @@ def webhook():
         response=response(message.getRecipientID())
         response.send("Hello !")
 
-    # {u'object': u'page', u'entry': [{u'id': u'1800484040206796', u'time': 1479555077725, u'messaging': [{u'timestamp': 1479555055370, u'message': {u'text': u'hey', u'mid': u'mid.1479555055370:87ecb93551', u'seq': 2}, u'recipient': {u'id': u'1800484040206796'}, u'sender': {u'id': u'1160095700743679'}}]}]}
-
 def log(message):
     print str(message)
     sys.stdout.flush()
