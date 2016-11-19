@@ -37,7 +37,7 @@ config() {
     heroku config:add VERIFY_TOKEN=$3
 
     echo "Configuring Production env"
-    heroku config:add Bot_ENV="production"
+    heroku config:add BOT_ENV="production"
 }
 
 removeapps() {
