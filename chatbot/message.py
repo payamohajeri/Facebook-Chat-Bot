@@ -1,5 +1,3 @@
-from chatbot.constant import *
-
 import json
 
 class message(object):

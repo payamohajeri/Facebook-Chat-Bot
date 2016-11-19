@@ -10,4 +10,4 @@ else:
     _verify_token=None
 
 _fb_url="https://graph.facebook.com/v2.6/me/messages"
-__response_content_type="application/json"
+_response_content_type="application/json"

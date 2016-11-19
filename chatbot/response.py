@@ -1,5 +1,4 @@
-from chatbot.constant import *
-
+from chatbot.constant import _access_token, _fb_url, _response_content_type
 import json
 
 class response(object):

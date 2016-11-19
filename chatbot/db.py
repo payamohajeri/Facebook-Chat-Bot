@@ -1,4 +1,4 @@
-from chatbot.constant import *
+from chatbot.constant import _my_env
 import redis
 
 class db(object):

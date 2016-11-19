@@ -2,6 +2,10 @@
 
 install() {
     heroku plugins:install heroku-redis
+    heroku addons:create heroku-redis:hobby-dev
+    heroku addons | grep heroku-redis
+    heroku config | grep REDIS
+    heroku redis:info
 }
 
 init() {
