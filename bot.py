@@ -7,9 +7,9 @@ import json
 import requests
 from flask import Flask, request
 
-from chatbot import message
-from chatbot import db
-from chatbot import response
+from chatbot.message import message
+from chatbot.db import db
+from chatbot.response import response
 
 app = Flask(__name__)
 
@@ -28,7 +28,7 @@ def verify():
 @app.route('/', methods=['POST'])
 def webhook():
     data = request.get_json()
-    db.insert(["webhook", json.dumps(request)])
+    botdb.insert(["webhook", json.dumps(request)])
     if data["object"] == "page":
         message=message(data)
         response=response(message.getRecipientID())
@@ -38,6 +38,9 @@ def log(message):
     print str(message)
     sys.stdout.flush()
 
-if __name__ == '__main__':
-    db=db()
+def main():
+    botdb=db()
     app.run(debug=True)
+
+if __name__ == '__main__':
+    main()
