@@ -19,8 +19,8 @@ class response(object):
                 data=message[2]
                 )
         if fb_response.status_code != 200:
-            log(r.status_code)
-            log(r.text)
+            log(fb_response.status_code)
+            log(fb_response.text)
         else:
             pass
 
