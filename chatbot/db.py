@@ -3,8 +3,8 @@ import redis
 
 class db(object):
     def __init__(self):
-        self.initRedis()
         self.db=None
+        self.initRedis()
         
     def initRedis(self):
         link=None
