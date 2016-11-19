@@ -52,6 +52,10 @@ logs() {
     heroku logs -t
 }
 
+rediscli() {
+    heroku redis:cli
+}
+
 case "$1" in
     "init")
         init

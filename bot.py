@@ -34,6 +34,7 @@ def webhook():
         message=message(data)
         response=response(message.getRecipientID())
         response.send("Hello !")
+    return "ok", 200
 
 def log(message):
     print str(message)
