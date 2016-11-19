@@ -12,7 +12,7 @@ from chatbot.db import db
 from chatbot.response import response
 
 app=Flask(__name__)
-botdb=None
+botdb=db()
 
 @app.route('/', methods=['GET'])
 def verify():
@@ -40,7 +40,6 @@ def log(message):
     sys.stdout.flush()
 
 def main():
-    botdb=db()
     app.run(debug=True)
 
 if __name__ == '__main__':
