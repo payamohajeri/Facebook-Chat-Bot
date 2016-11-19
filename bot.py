@@ -29,11 +29,11 @@ def verify():
 @app.route('/', methods=['POST'])
 def webhook():
     data = request.get_json()
-    botdb.insert(["webhook", request.query_string])
+    # botdb.insert(["webhook", request.query_string])
     if data["object"] == "page":
-        message=message(data)
-        response=response(message.getRecipientID())
-        response.send("Hello !")
+        botmessage=message(data)
+        botresponse=response(botmessage.getRecipientID())
+        botresponse.send("Hello !")
     return "ok", 200
 
 def log(message):
