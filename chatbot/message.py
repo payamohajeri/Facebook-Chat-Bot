@@ -37,12 +37,12 @@ class message(object):
         self.setRecipientID(recipient_id)
         
         # the message's text
-        # message_text = event["message"]["text"]
-        # self.setMessageText(message_text)
+        message_text = event["message"]["text"]
+        self.setMessageText(message_text)
 
         # the message's timestamp
-        # message_timestamp = event["message"]["timestamp"]
-        # self.setMessageTimestamp(message_timestamp)
+        message_timestamp = event["timestamp"]
+        self.setMessageTimestamp(message_timestamp)
 
     def getRecipientID(self):
         return self.recipient_id

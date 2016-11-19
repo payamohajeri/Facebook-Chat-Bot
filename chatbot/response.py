@@ -23,10 +23,10 @@ class response(object):
         else:
             pass
 
-    def setRecipientID(value):
+    def setRecipientID(self, value):
         self.recipient_id=value
 
-    def setMessageText(value):
+    def setMessageText(self, value):
         self.message_text=value
 
     def prepare():
