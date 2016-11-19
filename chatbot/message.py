@@ -7,7 +7,7 @@ class message(object):
         self.recipient_id = None
         self.message_text = None
         self.message_timestamp = None
-        self.parse(data)
+        self.parse()
 
     def parse(self):
         for entry in self.data["entry"]:
