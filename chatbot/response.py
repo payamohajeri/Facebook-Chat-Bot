@@ -1,5 +1,6 @@
 from chatbot.constant import _access_token, _fb_url, _response_content_type
 import json
+import requests
 
 class response(object):
     def __init__(self, recipient_id):
