@@ -1,4 +1,4 @@
-from chatbot.constant import _my_env
+from chatbot.constant import _db_link
 import redis
 
 class db(object):
@@ -7,11 +7,7 @@ class db(object):
         self.initRedis()
         
     def initRedis(self):
-        link=None
-        if _my_env == "production":
-            link=os.environ.get("REDIS_URL")
-        else:
-            link="localhost:6379"
+        link=_db_link
         db = redis.from_url(link)
         self.setDB(db)
 
