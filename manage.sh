@@ -1,14 +1,14 @@
 #!/bin/bash
 
 install() {
-    # for manuall install
-    echo "Install"
-    init
+    heroku plugins:install heroku-redis
 }
 
 init() {
     git remote rm heroku
     heroku create
+    install
+    config
 }
 
 test() {
@@ -30,15 +30,22 @@ buildpack() {
 
 config() {
 
-    #Facebook app access token
+    echo "Configuring Facebook app access token"
     heroku config:add PAGE_ACCESS_TOKEN=$2
 
-    #Facebook app verify token
+    echo "Configuring Facebook app verify token"
     heroku config:add VERIFY_TOKEN=$3
+
+    echo "Configuring Production env"
+    heroku config:add Bot_ENV="production"
 }
 
 removeapps() {
     for app in $(heroku apps); do heroku apps:destroy --app $app --confirm $app; done
+}
+
+logs() {
+    heroku logs -t
 }
 
 case "$1" in
@@ -53,6 +60,9 @@ case "$1" in
         ;;
     "set:buildpack")
         buildpack
+        ;;
+    "enable:logs")
+        logs
         ;;
     "config")
         config
