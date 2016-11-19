@@ -1,4 +1,5 @@
 from chatbot.constant import _access_token, _fb_url, _response_content_type
+from chatbot.shared import *
 import json
 import requests
 

@@ -1,7 +1,6 @@
 #!/usr/local/bin/python
 
 import os
-import sys
 import json
 
 import requests
@@ -10,6 +9,7 @@ from flask import Flask, request
 from chatbot.message import message
 from chatbot.db import db
 from chatbot.response import response
+from chatbot.shared import *
 
 app=Flask(__name__)
 botdb=db()
@@ -36,10 +36,6 @@ def webhook():
         botresponse=response(botmessage.getRecipientID())
         botresponse.send("Hello !")
     return "ok", 200
-
-def log(message):
-    print str(message)
-    sys.stdout.flush()
 
 def main():
     app.run(debug=True)
