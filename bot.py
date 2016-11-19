@@ -36,7 +36,7 @@ def webhook():
         botMessage=message(data)
         userInfo=user(botMessage.getSenderID())
         botResponse=response(botMessage.getSenderID())
-        botResponse.send("Hello "+str(userInfo.getFirstname())+" !")
+        botResponse.send("Hello "+str(userInfo.getFirstname())+" ! I hope you are doing well ;).")
     else:
         pass
     return "ok", 200
