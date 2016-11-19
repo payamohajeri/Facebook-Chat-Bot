@@ -34,8 +34,8 @@ def webhook():
     # botDB.insert(["webhook", request.query_string])
     if "object" in data and data["object"] == "page":
         botMessage=message(data)
-        userInfo=user(botmessage.getSenderID())
-        botResponse=response(botmessage.getSenderID())
+        userInfo=user(botMessage.getSenderID())
+        botResponse=response(botMessage.getSenderID())
         botResponse.send("Hello "+str(userInfo.getFirstName())+" !")
     else:
         pass
