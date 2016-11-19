@@ -28,7 +28,7 @@ def verify():
 @app.route('/', methods=['POST'])
 def webhook():
     data = request.get_json()
-    db.insert(["webhook", request])
+    db.insert(["webhook", json.dumps(request)])
     if data["object"] == "page":
         message=message(data)
         response=response(message.getRecipientID())

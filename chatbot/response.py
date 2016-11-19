@@ -43,6 +43,3 @@ class response(object):
         })
 
         return [params, headers, data]
-
-    def serialise(self):
-        return json.dumps(self.to_dict())
