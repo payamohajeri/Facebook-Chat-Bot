@@ -1,6 +1,6 @@
 import os
 
-_my_env = "production" if "BOT ENV" in os.environ and os.environ["BOT_ENV"]=="production" else "development"
+_my_env = "production" if "BOT_ENV" in os.environ and os.environ["BOT_ENV"]=="production" else "development"
 
 if _my_env == "production":
     _access_token=os.environ["PAGE_ACCESS_TOKEN"]
