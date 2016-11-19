@@ -11,7 +11,8 @@ from chatbot.message import message
 from chatbot.db import db
 from chatbot.response import response
 
-app = Flask(__name__)
+app=Flask(__name__)
+botdb=None
 
 @app.route('/', methods=['GET'])
 def verify():
