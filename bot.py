@@ -11,6 +11,11 @@ from chatbot.db import db
 from chatbot.response import response
 from chatbot.user import user
 from chatbot.utils import *
+from chatbot.button import WebUrlButton
+from chatbot.button import PostbackButton
+from chatbot.template import ButtonTemplate
+from chatbot.attachment import TemplateAttachment
+
 
 app=Flask(__name__)
 botDB=db()
@@ -36,7 +41,28 @@ def webhook():
         botMessage=message(data)
         userInfo=user(botMessage.getSenderID())
         botResponse=response(botMessage.getSenderID())
-        botResponse.send("Hello "+str(userInfo.getFirstname())+" ! I hope you are doing well ;).")
+        botResponse.sendText("Hello "+str(userInfo.getFirstname())+" ! I hope you are doing well ;).")
+
+        web_button = WebUrlButton(
+           title='Show website',
+           url='https://petersapparel.parseapp.com'
+        )
+
+        postback_button = PostbackButton(
+           title='Start chatting',
+           payload='USER_DEFINED_PAYLOAD'
+        )
+
+        template = ButtonTemplate(
+           text='What do you want to do next?',
+           buttons=[
+               web_button, postback_button
+           ]
+        )
+
+        attachment = TemplateAttachment(template=template)
+        botResponse.sendAttachment(attachment)
+
     else:
         pass
     return "ok", 200

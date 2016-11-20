@@ -10,11 +10,10 @@ class response(object):
         self.fb_url=_fb_url
         self.recipient_id=recipient_id
         self.message_text=None
+        self.attachment=None
 
-    def send(self, message_text):
-        self.setMessageText(message_text)
-        message=self.prepare()
-        fb_response=requests.post('https://graph.facebook.com/v2.6/me/messages',
+    def send(self, message):
+        fb_response=requests.post(self.fb_url,
                 params=message[0],
                 headers=message[1],
                 data=message[2]
@@ -23,7 +22,15 @@ class response(object):
             log(fb_response.status_code)
             log(fb_response.text)
         else:
-            pass
+            pass        
+
+    def sendText(self, message_text):
+        self.setMessageText(message_text)
+        message=self.prepareText()
+
+    def sendAttachment(self, attachment):
+        sef.setAttachment(attachment)
+        message=self.prepareWithAttachment()
 
     def setRecipientID(self, value):
         self.recipient_id=value
@@ -31,7 +38,10 @@ class response(object):
     def setMessageText(self, value):
         self.message_text=value
 
-    def prepare(self):
+    def setAttachment(self, value):
+        self.attachment=value
+
+    def prepareText(self):
         params = { 'access_token': self.access_token }
         headers = { 'Content-Type': self.content_type }
         data = json.dumps({
@@ -40,6 +50,20 @@ class response(object):
             },
             'message': {
                 'text': self.message_text
+            }
+        })
+
+        return [params, headers, data]
+
+    def prepareAttachment(self):
+        params = { 'access_token': self.access_token }
+        headers = { 'Content-Type': self.content_type }
+        data = json.dumps({
+            'recipient': {
+                'id': self.recipient_id
+            },
+            'message': {
+                'attachment': self.attachment.to_dict()
             }
         })
 

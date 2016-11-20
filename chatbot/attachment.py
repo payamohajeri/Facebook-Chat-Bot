@@ -18,13 +18,14 @@ class attachment(object):
     def to_dict(self):
         return {
             'type': self.type,
-            'payload': self.payload
+            'payload': self.getPayload
         }
 
 class ImageAttachment(attachment):
     def __init__(self, url):
-        attachment.__init__(self, type='image')
+        attachment.__init__(self, url, type='image')
         self.url = url
+        sefl.setPayload()
 
     def setURL(self, value):
         self.url = url
@@ -32,13 +33,14 @@ class ImageAttachment(attachment):
     def getURL(self, value):
         return self.url
 
-    def getPayload(self):
-        return { 'url': self._url }
+    def setPayload(self):
+        self.payload={ 'url': self.url }
 
 class TemplateAttachment(attachment):
     def __init__(self, template):
-        attachment.__init__(self, type='template')
+        attachment.__init__(self, template, type='template')
         self.template = template
+        self.setPayload()
 
     def setTemplate(self, value):
         self.template = value
@@ -46,7 +48,7 @@ class TemplateAttachment(attachment):
     def getTemplate(self, value):
         return self.template
 
-    def getPayload(self):
-        return self.template.to_dict()
+    def setPayload(self):
+        self.payload=self.template.to_dict()
         
         
