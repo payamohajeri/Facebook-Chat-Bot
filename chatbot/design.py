@@ -41,7 +41,7 @@ class design(object):
 
         elif self.message.getMessagePayload() == "NotNow":
             self.botResponse.sendText("OK "+str(self.user.getFirstname())+\
-                "you can subscribe later.")
+                " you can subscribe later.")
             self.exploreMsg()
 
         elif self.message.getMessagePayload() == 'BestArticles':
@@ -97,7 +97,7 @@ class design(object):
         )
 
         explore_template = ButtonTemplate(
-            text='What do you want to explore?',
+            text='Do you want to explore ?',
             buttons=[
                 webButton, postbackFindArticlesButton
             ]
