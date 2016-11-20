@@ -29,7 +29,7 @@ class response(object):
         message=self.prepareText()
 
     def sendAttachment(self, attachment):
-        sef.setAttachment(attachment)
+        self.setAttachment(attachment)
         message=self.prepareWithAttachment()
 
     def setRecipientID(self, value):
