@@ -63,7 +63,7 @@ class design(object):
         )
 
         postbackSubscribeButton = PostbackButton(
-           title='Subscribe to TOP hacker news',
+           title='Subscribe - TOP news',
            payload='Subscribe'
         )
 
