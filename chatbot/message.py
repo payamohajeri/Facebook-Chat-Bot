@@ -62,7 +62,7 @@ class message(object):
     def getType(self):
         return self.type
 
-    def getMessageText(self)
+    def getMessageText(self):
         return self.message_text
 
     def getMessagePayload(self):
