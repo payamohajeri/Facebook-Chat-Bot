@@ -92,7 +92,7 @@ class design(object):
         )
 
         postbackFindArticlesButton = PostbackButton(
-           title='Find the best articles',
+           title='Find bests',
            payload='BestArticles'
         )
 
