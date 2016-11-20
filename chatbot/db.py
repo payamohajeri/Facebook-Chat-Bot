@@ -16,3 +16,6 @@ class db(object):
 
     def insert(self, value):
         self.db.set(value[0], value[1])
+
+    def subscribe(self, value):
+        self.db.sadd('subscibers', value)

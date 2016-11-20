@@ -25,14 +25,28 @@ class design(object):
             self.unknownMessage()
 
     def processText(self):
-        if self.message.getMessageText() == "hey":
-            self.welcomeMsg()
+        if self.message.getMessageText().lower == "hey" or \
+           self.message.getMessageText().lower == "hello" :
+           self.welcomeMsg()
+
         else:
             self.unknownMessage()
 
     def processPostback(self):
-        if self.message.getMessagePayload() == "USER_DEFINED_PAYLOAD":
-            self.botResponse.sendText("Got your postback")
+        if self.message.getMessagePayload() == "Subscribe":
+            db.subscribe(self.message.getSenderID())
+            self.botResponse.sendText("Wow "+str(self.user.getFirstname())+ \
+                "! you successfully subscribed :).")
+            self.exploreMsg()
+
+        elif self.message.getMessagePayload() == "NotNow":
+            self.botResponse.sendText("OK "+str(self.user.getFirstname())+\
+                "you can subscribe later.")
+            self.exploreMsg()
+
+        elif self.message.getMessagePayload() == 'BestArticles':
+            self.bestArticlesMsg()
+
         else:
             self.unknownMessage()
 
@@ -40,39 +54,115 @@ class design(object):
         self.botResponse.sendText("what ?! :|")
 
     def welcomeMsg(self):
-        self.botResponse.sendText("Hello "+str(self.user.getFirstname())+"! hope you are doing well ;).")
+        self.botResponse.sendText("Hello "+str(self.user.getFirstname())+\
+                "! hope you are doing well ;).")
 
-        web_button = WebUrlButton(
-           title='Show website',
-           url='https://petersapparel.parseapp.com'
+        webButton = WebUrlButton(
+           title='See website',
+           url='https://news.ycombinator.com/'
         )
 
-        postback_button = PostbackButton(
-           title='Start chatting',
-           payload='USER_DEFINED_PAYLOAD'
+        postbackSubscribeButton = PostbackButton(
+           title='Subscribe to TOP hacker news',
+           payload='Subscribe'
         )
 
-        template = ButtonTemplate(
-           text='What do you want to do next?',
-           buttons=[
-               web_button, postback_button
-           ]
+        postbackNotNowButton = PostbackButton(
+           title='Not now',
+           payload='NotNow'
         )
 
-        attachment = TemplateAttachment(template=template)
+        welcome_element=element(
+            title='Welcome to the Chatbot Hacker News',
+            item_url='https://news.ycombinator.com/',
+            image_url='https://news.ycombinator.com/favicon.ico',
+            subtitle='Start by subscribing to the top news',
+            buttons=[
+                webButton, postbackSubscribeButton, postbackNotNowButton
+            ]
+        )
+
+        attachment = TemplateAttachment(template=GenericTemplate([ welcome_element ]))
         self.botResponse.sendAttachment(attachment)
 
+    def exploreMsg(self):
+        webButton = WebUrlButton(
+           title='See website',
+           url='https://news.ycombinator.com/'
+        )
 
-        myelement=element(
-                title='title',
-                item_url='https://news.ycombinator.com/',
-                image_url='https://news.ycombinator.com/favicon.ico',
-                subtitle='subtitle',
-                buttons=[
-                    web_button, postback_button
-                ]
+        postbackFindArticlesButton = PostbackButton(
+           title='Find the best articles',
+           payload='BestArticles'
+        )
+
+        explore_template = ButtonTemplate(
+            text='What do you want to explore?',
+            buttons=[
+                webButton, postbackFindArticlesButton
+            ]
+        )
+
+        attachment = TemplateAttachment(template=explore_template)
+        self.botResponse.sendAttachment(attachment)
+
+    def bestArticlesMsg(self):
+        # The article data should be read from database, 
+        # This is just for sample.
+        articles=[
+            {
+                "link":"http://www.apple.com/stevejobs/",
+                "title":"Steve Jobs has passed away",
+                "description":"The devastating news of one of the passing of one of modern technology's biggest icons."
+            },
+            {
+                "link":"http://news.ycombinator.com/vote?for=3742902&dir=up&whence=%6e%65%77%65%73%74",
+                "title":"Show HN: This up votes itself",
+                "description":"A quirky little HN hack that upvotes itself with a link to a GET request."
+            },
+            {
+                "link":"http://www.businessweek.com/articles/2014-10-30/tim-cook-im-proud-to-be-gay",
+                "title":"Tim Cook Speaks Up",
+                "description":"In a first amongst elite corporate America, Apple's post-Jobs CEO openly declares his homosexuality."
+            },
+            {
+                "link":"http://gabrielecirulli.github.io/2048/",
+                "title":"2048",
+                "description":"The indie-game with powers of two that addicted everybody."
+            },
+            {
+                "link":"http://varnull.adityamukerjee.net/post/59021412512/dont-fly-during-ramadan",
+                "title":"Don't Fly During Ramadan",
+                "description":"The chilling tale of an American-Indian's discrimination at US airport security."
+            },
+        ]
+
+        elements=[]
+
+        for article in articles:
+            webButton = WebUrlButton(
+               title='View in Web',
+               url=article["link"]
             )
-        template=GenericTemplate([ myelement ])
-
-        attachment = TemplateAttachment(template=template)
+            elements.append(element(
+                    title=article["title"],
+                    item_url=article["link"],
+                    image_url='https://news.ycombinator.com/favicon.ico',
+                    subtitle=article["description"],
+                    buttons=[
+                        webButton
+                    ]
+                )
+            )
+        attachment = TemplateAttachment(template=GenericTemplate(elements))
         self.botResponse.sendAttachment(attachment)
+
+
+
+
+
+
+
+
+
+
