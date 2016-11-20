@@ -22,11 +22,11 @@ class button(object):
 class WebUrlButton(button):
 
     def __init__(self, title, url):
-        super(GenericTemplate, self).__init__(title=title, type="web_url")
+        super(WebUrlButton, self).__init__(title=title, type="web_url")
         self.url = url
 
 class PostbackButton(button):
 
     def __init__(self, title, payload):
-        super(GenericTemplate, self).__init__(title=title, type="postback")
+        super(PostbackButton, self).__init__(title=title, type="postback")
         self.payload = payload
