@@ -14,7 +14,7 @@ class design(object):
         self.start()
 
     def start(self):
-        message_type = message.getType()
+        self.message_type = message.getType()
         if message_type == "text":
             self.processText()
         elif message_type == "postback":
