@@ -19,3 +19,6 @@ class db(object):
 
     def subscribe(self, value):
         self.db.sadd('subscibers', value)
+
+    def getSuscribers(self):
+        return self.db.smembers('subscibers')

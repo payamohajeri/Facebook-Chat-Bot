@@ -11,6 +11,7 @@ from chatbot.db import db
 from chatbot.user import user
 from chatbot.utils import *
 from chatbot.design import design
+from chatbot.notification import notification
 
 app=Flask(__name__)
 botDB=db()
@@ -43,6 +44,9 @@ def webhook():
 @app.route('/twitter', methods=['POST'])
 def updateTwitter():
     log(request.data)
+    data = request.get_json()
+    botNotification=notification(botDB)
+    botNotification.informSubscribers(data["text"])
     return "ok", 200
 
 def main():
