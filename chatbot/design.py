@@ -28,13 +28,13 @@ class design(object):
         if self.message.getMessageText() == "hey":
             self.welcomeMsg()
         else:
-            pass
+            self.unknownMessage()
 
     def processPostback(self):
         if self.message.getMessagePayload() == "USER_DEFINED_PAYLOAD":
             self.botResponse.sendText("Got your postback")
         else:
-            pass
+            self.unknownMessage()
 
     def unknownMessage(self):
         self.botResponse.sendText("what ?! :|")
