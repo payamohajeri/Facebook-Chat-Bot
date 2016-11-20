@@ -4,6 +4,7 @@ from chatbot.button import PostbackButton
 from chatbot.template import ButtonTemplate
 from chatbot.attachment import TemplateAttachment
 from chatbot.utils import *
+from chatbot.element import element
 
 class design(object):
     def __init__(self, message, user, db):
@@ -56,6 +57,21 @@ class design(object):
                web_button, postback_button
            ]
         )
+
+        attachment = TemplateAttachment(template=template)
+        self.botResponse.sendAttachment(attachment)
+
+
+        myelement=element(
+                title='title',
+                item_url='https://news.ycombinator.com/',
+                image_url='https://news.ycombinator.com/favicon.ico',
+                subtitle='subtitle',
+                buttons=[
+                    web_button, postback_button
+                ]
+            )
+        template=GenericTemplate([ myelement ])
 
         attachment = TemplateAttachment(template=template)
         self.botResponse.sendAttachment(attachment)
