@@ -8,14 +8,9 @@ from flask import Flask, request
 
 from chatbot.message import message
 from chatbot.db import db
-from chatbot.response import response
 from chatbot.user import user
 from chatbot.utils import *
-from chatbot.button import WebUrlButton
-from chatbot.button import PostbackButton
-from chatbot.template import ButtonTemplate
-from chatbot.attachment import TemplateAttachment
-
+from chatbot.design import design
 
 app=Flask(__name__)
 botDB=db()
@@ -40,29 +35,7 @@ def webhook():
     if "object" in data and data["object"] == "page":
         botMessage=message(data)
         userInfo=user(botMessage.getSenderID())
-        botResponse=response(botMessage.getSenderID())
-        botResponse.sendText("Hello "+str(userInfo.getFirstname())+"! hope you are doing well ;).")
-
-        web_button = WebUrlButton(
-           title='Show website',
-           url='https://petersapparel.parseapp.com'
-        )
-
-        postback_button = PostbackButton(
-           title='Start chatting',
-           payload='USER_DEFINED_PAYLOAD'
-        )
-
-        template = ButtonTemplate(
-           text='What do you want to do next?',
-           buttons=[
-               web_button, postback_button
-           ]
-        )
-
-        attachment = TemplateAttachment(template=template)
-        botResponse.sendAttachment(attachment)
-
+        botDesign=design(message=botMessage, user=userInfo, db=botDB)
     else:
         pass
     return "ok", 200
