@@ -43,6 +43,7 @@ def webhook():
 @app.route('/twitter', methods=['POST'])
 def updateTwitter():
     log(request.data)
+    return "ok", 200
 
 def main():
     app.run(debug=True)
