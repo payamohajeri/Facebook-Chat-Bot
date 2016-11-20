@@ -9,8 +9,6 @@ class GenericTemplate(template):
         self.setElements(elements)
         
     def getElements(self):
-        if len(self.elements) > 10:
-            raise ValueError('Too many elements in the template')
         return self.elements
 
     def setElements(self, value):
@@ -18,7 +16,8 @@ class GenericTemplate(template):
             raise ValueError(
                 'elements should be a list of Element'
                 )
-        self.elements=value
+        else:
+            self.elements=value
 
     def to_dict(self):
         return {
@@ -40,7 +39,8 @@ class ButtonTemplate(template):
             raise ValueError(
                 'buttons should be a list of Button'
             )
-        self.buttons = value
+        else:
+            self.buttons = value
 
     def to_dict(self):
         return {
