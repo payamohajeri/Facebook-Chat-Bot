@@ -34,7 +34,7 @@ class design(object):
 
     def processPostback(self):
         if self.message.getMessagePayload() == "Subscribe":
-            db.subscribe(self.message.getSenderID())
+            self.db.subscribe(self.message.getSenderID())
             self.botResponse.sendText("Wow "+str(self.user.getFirstname())+ \
                 "! you successfully subscribed :).")
             self.exploreMsg()
