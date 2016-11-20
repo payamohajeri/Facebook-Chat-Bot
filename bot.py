@@ -40,6 +40,10 @@ def webhook():
         pass
     return "ok", 200
 
+@app.route('/twitter', methods=['POST'])
+def updateTwitter():
+    log(request.data)
+
 def main():
     app.run(debug=True)
 

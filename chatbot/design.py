@@ -109,6 +109,7 @@ class design(object):
     def bestArticlesMsg(self):
         # The article data should be read from database, 
         # This is just for sample.
+        # http://debarghyadas.com/writes/the-top-100-hacker-news-posts-of-all-time/
         articles=[
             {
                 "link":"http://www.apple.com/stevejobs/",
