@@ -15,12 +15,6 @@ class attachment(object):
     def getPayload(self):
         return self.payload
 
-    def to_dict(self):
-        return {
-            'type': self.type,
-            'payload': self.getPayload
-        }
-
 class ImageAttachment(attachment):
     def __init__(self, url):
         super(ImageAttachment, self).__init__(type='image')
@@ -36,6 +30,12 @@ class ImageAttachment(attachment):
     def setPayload(self):
         self.payload={ 'url': self.url }
 
+    def to_dict(self):
+        return {
+            'type': self.type,
+            'payload': self.getPayload
+        }
+
 class TemplateAttachment(attachment):
     def __init__(self, template):
         super(TemplateAttachment, self).__init__(type='template')
@@ -50,5 +50,11 @@ class TemplateAttachment(attachment):
 
     def setPayload(self):
         self.payload=self.template.to_dict()
+
+    def to_dict(self):
+        return {
+            'type': self.type,
+            'payload': self.getPayload
+        }
         
         
