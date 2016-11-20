@@ -1,5 +1,5 @@
 from chatbot.constant import _access_token, _fb_url, _response_content_type
-from chatbot.shared import *
+from chatbot.utils import *
 import json
 import requests
 
@@ -14,7 +14,7 @@ class response(object):
     def send(self, message_text):
         self.setMessageText(message_text)
         message=self.prepare()
-        fb_response=requests.post("https://graph.facebook.com/v2.6/me/messages",
+        fb_response=requests.post('https://graph.facebook.com/v2.6/me/messages',
                 params=message[0],
                 headers=message[1],
                 data=message[2]
@@ -32,14 +32,14 @@ class response(object):
         self.message_text=value
 
     def prepare(self):
-        params = { "access_token": self.access_token }
-        headers = { "Content-Type": self.content_type }
+        params = { 'access_token': self.access_token }
+        headers = { 'Content-Type': self.content_type }
         data = json.dumps({
-            "recipient": {
-                "id": self.recipient_id
+            'recipient': {
+                'id': self.recipient_id
             },
-            "message": {
-                "text": self.message_text
+            'message': {
+                'text': self.message_text
             }
         })
 

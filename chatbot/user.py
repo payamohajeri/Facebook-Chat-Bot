@@ -1,5 +1,5 @@
 from chatbot.constant import _fb_userinfo_url, _access_token
-from chatbot.shared import *
+from chatbot.utils import *
 import json
 import requests
 
@@ -25,10 +25,10 @@ class user(object):
             log(fb_response.text)
         else:
             data=fb_response.json()
-            self.setProfilePic(data["profile_pic"])
-            self.setFirstname(data["first_name"])
-            self.setLastname(data["last_name"])
-            self.setGender(data["gender"])
+            self.setProfilePic(data['profile_pic'])
+            self.setFirstname(data['first_name'])
+            self.setLastname(data['last_name'])
+            self.setGender(data['gender'])
 
     def setProfilePic(self, value):
         self.profilePic=value

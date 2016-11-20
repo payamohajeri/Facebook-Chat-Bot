@@ -10,7 +10,7 @@ from chatbot.message import message
 from chatbot.db import db
 from chatbot.response import response
 from chatbot.user import user
-from chatbot.shared import *
+from chatbot.utils import *
 
 app=Flask(__name__)
 botDB=db()
