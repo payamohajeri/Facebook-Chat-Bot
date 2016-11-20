@@ -25,8 +25,8 @@ class design(object):
             self.unknownMessage()
 
     def processText(self):
-        if self.message.getMessageText().lower == "hey" or \
-           self.message.getMessageText().lower == "hello" :
+        if self.message.getMessageText() == "hey" or \
+           self.message.getMessageText() == "hello" :
            self.welcomeMsg()
 
         else:
