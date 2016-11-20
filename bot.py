@@ -41,7 +41,7 @@ def webhook():
         botMessage=message(data)
         userInfo=user(botMessage.getSenderID())
         botResponse=response(botMessage.getSenderID())
-        botResponse.sendText("Hello "+str(userInfo.getFirstname())+" ! I hope you are doing well ;).")
+        botResponse.sendText("Hello "+str(userInfo.getFirstname())+"! hope you are doing well ;).")
 
         web_button = WebUrlButton(
            title='Show website',
