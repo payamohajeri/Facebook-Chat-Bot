@@ -23,7 +23,7 @@ class attachment(object):
 
 class ImageAttachment(attachment):
     def __init__(self, url):
-        attachment.__init__(self, url, type='image')
+        super(ImageAttachment, self).__init__(type='image')
         self.url = url
         sefl.setPayload()
 
@@ -38,7 +38,7 @@ class ImageAttachment(attachment):
 
 class TemplateAttachment(attachment):
     def __init__(self, template):
-        attachment.__init__(self, template, type='template')
+        super(TemplateAttachment, self).__init__(type='template')
         self.template = template
         self.setPayload()
 

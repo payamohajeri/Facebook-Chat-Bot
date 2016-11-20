@@ -4,7 +4,7 @@ class template(object):
 
 class GenericTemplate(template):
     def __init__(self, elements):
-        template.__init__(self, type='generic')
+        super(GenericTemplate, self).__init__(type='generic')
         self.elements=None
         self.setElements(elements)
         
@@ -29,7 +29,7 @@ class GenericTemplate(template):
 
 class ButtonTemplate(template):
     def __init__(self, text, buttons):
-        template.__init__(self, type='button')
+        super(ButtonTemplate, self).__init__(type='button')
         self.text = text
         self.buttons=None
         self.setButtons(buttons)
