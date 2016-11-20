@@ -27,10 +27,12 @@ class response(object):
     def sendText(self, message_text):
         self.setMessageText(message_text)
         message=self.prepareText()
+        self.send(message)
 
     def sendAttachment(self, attachment):
         self.setAttachment(attachment)
-        message=self.prepareWithAttachment()
+        message=self.prepareAttachment()
+        self.send(message)
 
     def setRecipientID(self, value):
         self.recipient_id=value
