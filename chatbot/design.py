@@ -63,7 +63,7 @@ class design(object):
             self.unknownMessage()
 
     def unknownMessage(self):
-        self.botResponse.sendText("what ?! :|")
+        self.botResponse.sendText("what ?! :| Please start with \"hey\" ")
 
     def welcomeMsg(self):
         # The first message that will be shown to user.
