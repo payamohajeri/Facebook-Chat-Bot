@@ -21,7 +21,7 @@ vagrant up
 ## Development and Deployment:
 
 For development, I used Python programming 
-language with Flask framework and Redis database.
+language with Flask framework, Redis database and Gunicorn.
 
 Since the database class is defined separatly we can change it easily and use
 other databases.
