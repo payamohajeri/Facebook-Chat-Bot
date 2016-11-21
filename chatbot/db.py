@@ -18,6 +18,8 @@ class db(object):
         self.db.set(value[0], value[1])
 
     def subscribe(self, value):
+        # TODO : we should define the following key in constants 
+        # or a config file
         self.db.sadd('subscibers', value)
 
     def getSuscribers(self):

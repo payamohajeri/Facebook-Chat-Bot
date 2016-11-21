@@ -13,6 +13,7 @@ class GenericTemplate(template):
 
     def setElements(self, value):
         if not isinstance(value, list):
+            # TODO: we should define the error message in a separate place (file)
             raise ValueError(
                 'elements should be a list of Element'
                 )
@@ -36,6 +37,7 @@ class ButtonTemplate(template):
 
     def setButtons(self, value):
         if not isinstance(value, list):
+            # TODO: we should define the error message in a separate place (file)
             raise ValueError(
                 'buttons should be a list of Button'
             )

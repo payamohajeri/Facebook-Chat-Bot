@@ -1,6 +1,7 @@
 class button(object):
     def __init__(self, title, type):
         if len(title) > 20:
+            # TODO: we should define the error message in a separate place (file)
             raise ValueError('Button title limit is 20 characters')
         else:
             self.title = title

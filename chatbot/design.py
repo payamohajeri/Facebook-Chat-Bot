@@ -8,6 +8,9 @@ from chatbot.utils import *
 from chatbot.element import element
 
 class design(object):
+
+    # in this class we define the bot flow and steps that user interact with
+
     def __init__(self, message, user, db):
         self.message = message
         self.user = user
@@ -22,9 +25,14 @@ class design(object):
         elif message_type == "postback":
             self.processPostback()
         else:
+            # we couldn't match the event with our handled events
             self.unknownMessage()
 
     def processText(self):
+        # TODO: we should use AI tools / word dictionary to find out
+        # more greeting statments.
+        # for manual definition, we can also write them in a file and read
+        # the file here to check the message text.
         if self.message.getMessageText() == "hey" or \
            self.message.getMessageText() == "hello" :
            self.welcomeMsg()
@@ -54,8 +62,12 @@ class design(object):
         self.botResponse.sendText("what ?! :|")
 
     def welcomeMsg(self):
+        # The first message that will be shown to user.
         self.botResponse.sendText("Hello "+str(self.user.getFirstname())+\
                 "! hope you are doing well ;).")
+
+        # TODO: we should not define the texts and urls in the code, =
+        # it's better to have in a config file
 
         webButton = WebUrlButton(
            title='See website',
@@ -86,6 +98,7 @@ class design(object):
         self.botResponse.sendAttachment(attachment)
 
     def exploreMsg(self):
+        # explore menu
         webButton = WebUrlButton(
            title='See website',
            url='https://news.ycombinator.com/'

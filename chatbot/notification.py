@@ -8,6 +8,9 @@ from chatbot.utils import *
 from chatbot.element import element
 
 class notification(object):
+
+    # This class is for notifying different subscribers with available ways
+
     def __init__(self, db):
         self.db = db
 
