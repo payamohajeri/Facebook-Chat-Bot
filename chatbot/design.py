@@ -34,7 +34,11 @@ class design(object):
         # for manual definition, we can also write them in a file and read
         # the file here to check the message text.
         if self.message.getMessageText() == "hey" or \
-           self.message.getMessageText() == "hello" :
+           self.message.getMessageText() == "hello" or \
+           self.message.getMessageText() == "hi" or \
+           self.message.getMessageText() == "Hi" or \
+           self.message.getMessageText() == "Hello" or \
+           self.message.getMessageText() == "Hey" :
            self.welcomeMsg()
 
         else:
