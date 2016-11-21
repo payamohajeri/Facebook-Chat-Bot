@@ -3,8 +3,8 @@
 
 Facebook Messenger Bot (ChatBot)
 
-https://www.facebook.com/ChatbotHackerNews/
-http://m.me/ChatbotHackerNews
+- https://www.facebook.com/ChatbotHackerNews/
+- http://m.me/ChatbotHackerNews
 
 ## For virtualizatoin:
 
